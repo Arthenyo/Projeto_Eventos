@@ -24,6 +24,9 @@ public class Atividade {
             inverseJoinColumns = @JoinColumn(name = "participante_id"))
     private Set<Participante> participantes = new HashSet<>();
 
+    @OneToMany(mappedBy = "atividade")
+    private Set<Bloco> blocos = new HashSet<>();
+
     public Atividade (){}
 
     public Atividade(Long id, String nome, String descricao, Double preco, Categoria categoria) {
@@ -72,5 +75,12 @@ public class Atividade {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public Set<Participante> getParticipantes() {
+        return participantes;
+    }
+    public Set<Bloco> getBlocos() {
+        return blocos;
     }
 }
